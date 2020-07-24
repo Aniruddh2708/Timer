@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+        p {
+            text-align: center;
+            font-size: 60px;
+        }
+        
+        #myBtn {
+            height: 50px;
+            width: 100px;
+        }
+        
+        .a2 {
+            text-align: center;
+        }
+        
+        .a3 {
+            font-size: 60px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="a1>">
+        <p class="a3">
+            Privado Timer
+        </p>
+    </div>
+    <p id="demo"></p>
+    <div class="a2">
+        <button id="myBtn" onclick="run()">
+            Start
+    </button>
+    </div>
+
+    <script>
+        document.getElementById("demo").innerHTML = "00" + ":" + "00";
+        var minutes = 0;
+        var seconds = 0;
+        var x = -1;
+
+        function run() {
+
+            if (x == -1) {
+
+                clearInterval(x);
+                document.getElementById("myBtn").innerHTML = "Pause";
+
+
+                x = setInterval(function() {
+
+
+                    seconds++;
+                    if (seconds < 10) {
+                        document.getElementById("demo").innerHTML = "0" + minutes + ":" + "0" +
+                            seconds;
+                    } else {
+                        document.getElementById("demo").innerHTML = "0" + minutes + ":" + seconds;
+                    }
+
+                    if (seconds == 60) {
+                        minutes++;
+                        seconds = seconds - 60;
+                        if (seconds < 10) {
+                            document.getElementById("demo").innerHTML = "0" + minutes + ":" + "0" +
+                                seconds;
+                        } else {
+                            document.getElementById("demo").innerHTML = "0" + minutes + ":" + seconds;
+                        }
+                        if (minutes == 5) {
+                            clearInterval(x);
+                            document.getElementById("demo").innerHTML = "0" + 5 + ":" + "00";
+                            document.getElementById("demo").style.color = "#FF0000";
+                            document.getElementById("myBtn").innerHTML = "Reset";
+                            document.getElementById("myBtn").onclick = function() {
+                                location.href = "C:/Users/Aniruddh/Desktop/Timer/ace.html";
+                            }
+
+                        }
+                    }
+                }, 1000);
+            } else {
+
+                clearInterval(x);
+                x = -1;
+                document.getElementById("myBtn").innerHTML = "Start";
+
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>
